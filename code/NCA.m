@@ -1,23 +1,27 @@
 close all; clear all;
-Data = load('results/results_new_ED_10_EO_0.5.mat');
+filepath = 'yourfilepath';
+
+%%
+Data = load(filepath);
 Results = Data.results;
-Results_NN = Data.results_norm;
-Annotations = Data.annotations;
-Labels = Data.labels;
-Usable_Leads = [1:16 20 21];
+Annotations = categorical(Data.annotations);
+Features = Data.features;
+Patient_IDS = Data.patient_ids;
+selected_features = [1:length(Features)];
+selected_idxs = Annotations~='Stenose';
 
-results_selected = Results_NN;
-X = results_selected(:,Usable_Leads);
-y = categorical(Annotations);
+y = Annotations(selected_idxs);
+X = Results(selected_idxs, selected_features);
+Features = Features(selected_features);
 
-cvp = cvpartition(y,'holdout',0.2);
+cvp = cvpartition(y,'holdout',0.3);
 Xtrain = X(cvp.training, :);
 ytrain = y(cvp.training, :);
 Xtest = X(cvp.test, :);
 ytest = y(cvp.test, :);
 idxs = 1:size(Xtrain, 1);
 
-nbootstraps = 10; 
+nbootstraps = 100; 
 n = (length(y)*0.8);
 lambdavals = linspace(0,8,40)/n;
 Feature_Weights_Min = zeros(nbootstraps, size(X, 2));
@@ -75,39 +79,61 @@ for x = 1:nbootstraps
 end
 
 
-%%
-figure();
-boxplot(Feature_Weights_Min1SE, 'labels', {Labels{1,Usable_Leads}});
+%% plots
+close all
 
-figure();
-boxplot(Feature_Weights_Min, 'labels', {Labels{1,Usable_Leads}});
-%%
+figure('Name', 'Feature Weights Min1SE');
+[~, i] = sort(mean(Feature_Weights_Min1SE), 'descend');
+boxplot(normalize(Feature_Weights_Min1SE(:,i),2), 'labels', Features(1,i));
 
-figure();
-errorbar(lambdavals, mean(Mean_Losses, 1), std(Mean_Losses, 0, 1));
+figure('Name', 'Feature Weights Min');
+[~, j] = sort(mean(Feature_Weights_Min), 'descend');
+boxplot(normalize(Feature_Weights_Min(:,j), 2), 'labels', Features(1,j));
 
-figure();
-plot(lambdavals, Mean_Losses);
 
-%%
-figure();
-values = sum(Feature_Weights_Min1SE>0.7)/nbootstraps;
-labels = categorical(Labels(Usable_Leads));
-idxs = values>0.5;
-bar(labels(idxs), values(idxs), 'g');
+figure('Name', 'Mean_Losses');
+errorbar(lambdavals(1:12), mean(Mean_Losses(:,1:12), 1), std(Mean_Losses(:,1:12), 0, 1));
 hold on
-bar(labels(~idxs), values(~idxs), 'k');
-hold off
+errorbar(lambdavals(12:end), mean(Mean_Losses(:,12:end), 1), std(Mean_Losses(:,12:end), 0, 1), 'color', [0.9100 0.4100 0.1700]);
+xlabel('Lambda value')
+ylabel('Loss')
+ax = gca;
+ax.XAxis.FontSize = 12;
+ax.YAxis.FontSize = 12;
 
 %%
+figure();
+[values, i] = sort(sum(Feature_Weights_Min>mean(Feature_Weights_Min,2))/nbootstraps*100, 'descend');
+idxs = values>50;
+Features_copy = Features(i);
+for j = 1:length(Features_copy); Features_copy(j) = strrep(Features_copy(j), '_', ' '); end
+labels = categorical(Features_copy(idxs));
+labels = reordercats(labels, Features_copy(idxs));
+
+bar(labels(:),values(idxs));
+ylabel('frequency of selection [%]', 'FontSize', 12)
+ax = gca;
+ax.XAxis.FontSize = 12;
+
 features = Xtrain(:,idxs);
+t = templateSVM('Standardize','on', 'KernelFunction', 'polynomial', 'PolynomialOrder', 2);
+          
+svmMdl1 = fitcecoc(Xtrain, ytrain, 'Coding', 'Onevsone', 'Learners',t);
+svmMdl2 = fitcecoc(features,ytrain, 'Coding', 'Onevsone', 'Learners',t);
 
-%%
-svmMdl1 = fitcecoc(Xtrain, ytrain);
-svmMdl2 = fitcecoc(features,ytrain);
+p1 = predict(svmMdl1, Xtest(:,:));
+p2 = predict(svmMdl2, Xtest(:,idxs));
 
-p1 = predict(svmMdl2, Xtest(:,idxs))
+L1 = loss(svmMdl1,Xtest,ytest);
+L2 = loss(svmMdl2,Xtest(:,idxs),ytest);
 
-%%
-L1 = loss(svmMdl1,Xtest,ytest)
-L2 = loss(svmMdl2,Xtest(:,idxs),ytest)
+%%    
+Cms = confusionmat(ytest, p1);
+%Cms = confusionmat(ytest, p2)
+
+TP = Cms(1, 1); FP = Cms(1, 2); FN = Cms(2, 1); TN = Cms(2, 2);
+
+Accuracy = (TP+TN)./(TP+TN+FN+FP)
+Sensitivity = (TP)./(TP+FN)
+Specificity = (TN)./(TN+FP)
+precision = TP./(TP+FP)
