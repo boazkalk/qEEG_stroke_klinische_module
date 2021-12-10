@@ -28,4 +28,4 @@ annotations = data.annotations(idxs);
 userinput.patient = data.patient_ids(idxs);
 
 %%
-[Cms, cm_labels, Accuracy, Sensitivity, Specificity, F1] = ML_func_revised(features, annotations, userinput);
+[Cms, cm_labels, Accuracy, Sensitivity, Specificity, F1] = ML_func(features, annotations, userinput);
