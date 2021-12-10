@@ -1,0 +1,51 @@
+Onset	Duration	Annotation
++94.6601560	27.375	EEG : Ongeldig
++132.6289060	26.469	EEG : Ongeldig
++156.7261570		Note : start ok
++189.4726560	21.125	EEG : Ongeldig
++215.5664060	9.094	EEG : Ongeldig
++244.4726560	8.656	EEG : Ongeldig
++264.7226560	7.563	EEG : Ongeldig
++275.7226560	3.844	EEG : Ongeldig
++307.1289060	3.406	EEG : Ongeldig
++328.2226560	8.594	EEG : Ongeldig
++348.0976560	2.250	EEG : Ongeldig
++358.0976560	6.219	EEG : Ongeldig
++369.6289060	6.563	EEG : Ongeldig
++382.8164060	4.219	EEG : Ongeldig
++397.2851560	6.094	EEG : Ongeldig
++408.2851560	4.813	EEG : Ongeldig
++430.6601560	3.031	EEG : Ongeldig
++439.4726560	3.000	EEG : Ongeldig
++495.6289060	21.344	EEG : Ongeldig
++645.8789060	7.844	EEG : Ongeldig
++657.5664060	12.656	EEG : Ongeldig
++707.3164060	2.438	EEG : Ongeldig
++739.1914060	4.031	EEG : Ongeldig
++746.4101560	3.875	EEG : Ongeldig
++768.9101560	11.313	EEG : Ongeldig
++790.8476560	10.719	EEG : Ongeldig
++831.9726560	5.094	EEG : Ongeldig
++842.3789060	9.219	EEG : Ongeldig
++892.9726560	3.000	EEG : Ongeldig
++1389.0351560	4.219	EEG : Ongeldig
++3173.7226560	6.906	EEG : Ongeldig
++3202.9344380		Note : storm embolieen
++3212.1289060	7.531	EEG : Ongeldig
++3345.9101560	11.219	EEG : Ongeldig
++3364.7226560	25.844	EEG : Ongeldig
++3414.0976560	2.500	EEG : Ongeldig
++3737.4726560	3.969	EEG : Ongeldig
++4000	120	Stenose_x
++4167.5768470		Note : heparine
++4315.4765620	13.113	Klem
++4348.5078120	145.137	Klem
++4390.5078120	1900	Klem_x
++6003.9453120	3665.961	Klem
++6249.0625000		Note : flush
++6324.2311760		Note : shunt zou open zijn
++6365.3945310		Note : embolieen
++7382.9921870		Note : RR 190/82
++7476.9531250	1773.516	Shunt
++7486.9531250	1600	Shunt_x
++9251.3789060		Note : shunt stop

@@ -1,0 +1,26 @@
+Onset	Duration	Annotation
++1.6054680	3600.039	Video
++7.8085940	2.469	EEG : Ongeldig
++13.3398440	15.938	EEG : Ongeldig
++34.8085940	4.781	EEG : Ongeldig
++42.6835940	6.688	EEG : Ongeldig
++392.7148440	3.375	EEG : Ongeldig
++420.5898440	9.875	EEG : Ongeldig
++464.8398440	15.344	EEG : Ongeldig
++485.5898440	10.219	EEG : Ongeldig
++800.0000000	120	Stenose_x
++1309.6911790		Note : tcd gecorrigeerd
++1999.0744910		Note : communis dicht
++2014.9810160	30.940	Klem
++2206.3160220		Note : embolieën
++2383.5468750	206.358	Klem
++2425.5468750	160	Klem_x
++2590.4860340	1896.576	Shunt
++2600.4860340	270	Shunt_x
++3605.7812490	1409.503	Video
++4487.1880420	184.964	Klem
++4528			115 Klem_x
++4645.1259340		Note : klem los
++4778.8085940	6.875	EEG : Ongeldig
++4816.6210940	6.875	EEG : Ongeldig
++5019.4062490	904.257	Video

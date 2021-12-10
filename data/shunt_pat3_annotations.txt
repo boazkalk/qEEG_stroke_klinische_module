@@ -1,0 +1,45 @@
+80 Onset	Duration	Annotation
++2.2031240	3600.042	Video
++184.7045550		Note : nog voorbereiding van patient
++870.7500000	79.063	EEG : Ongeldig
++873.7861110		Note : start OK
++953.3750000	20.313	EEG : Ongeldig
++979.6875000	4.094	EEG : Ongeldig
++1000.1875000	7.031	EEG : Ongeldig
++1011.6250000	13.750	EEG : Ongeldig
++1029.3750000	5.063	EEG : Ongeldig
++1042.4687500	3.156	EEG : Ongeldig
++1050.7812500	5.188	EEG : Ongeldig
++1063.2187500	32.438	EEG : Ongeldig
++1102.8750000	10.500	EEG : Ongeldig
++1120.7500000	26.125	EEG : Ongeldig
++1150.5312500	11.500	EEG : Ongeldig
++1167.6250000	12.250	EEG : Ongeldig
++1184.4687500	5.031	EEG : Ongeldig
++1201.5625000	10.188	EEG : Ongeldig
++1222.4687500	8.031	EEG : Ongeldig
++1234.3125000	16.844	EEG : Ongeldig
++1266.1562500	18.719	EEG : Ongeldig
++1288.3437500	5.000	EEG : Ongeldig
++1297.0000000	2.313	EEG : Ongeldig
++1305.4062500	11.938	EEG : Ongeldig
++1391.6875000	6.156	EEG : Ongeldig
++1407.5937500	5.375	EEG : Ongeldig
++1999.0937500	23.875	EEG : Ongeldig
++2026.1875000	14.125	EEG : Ongeldig
++2400.0000000	120	Stenose_x
++3539.3896240		Note : nog steeds vrijprepareren
++3606.3867180	3595.578	Video
++3656.9849820		Note : voor klem
++3669.9453120		Note : heparine 5000 eenheden
++3942.0156250		Note : klem
++3971.2603890		Note : klem los
++4245.7283940		Note : klem
++4245.7980310	124.620	Klem
++4285.7980310	80	Klem_x
++4370.9531250	771.498	Shunt
++4380.9531250	120	Shunt_x
++7205.9492180	845.199	Video
++7265.7007910		Note : open
++7888.5312500	2.344	EEG : Ongeldig
++7897.3125000	3.594	EEG : Ongeldig
